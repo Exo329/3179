@@ -1,0 +1,28 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Global average land temperatures" },
+    "data": {
+        "url": "data/GlobalTemperatures.csv"
+    },
+    "transform": [
+        { "calculate": "datum.LandAverageTemperature-datum.LandAverageTemperatureUncertainty", "as": "ci0" },
+        { "calculate": "datum.LandAverageTemperature-datum.LandAverageTemperatureUncertainty", "as": "ci1" }
+    ],
+    "layer": [
+        {
+            "mark": "errorband",
+            "encoding": {
+                "x": { "field": "dt", "title": "Date", "timeUnit": "utcdate","axis": {"format": "%b %Y"} },
+                "y": { "field": "ci1", "type": "quantitative","title":"Average land temperature (Celsius)" },
+                "y2": { "field": "ci0" }
+            }
+        },
+        {
+            "mark": "line",
+            "encoding": {
+                "x": { "field": "dt", "title": "Date" },
+                "y": { "field": "LandAverageTemperature", "type": "quantitative" }
+            }
+        }
+    ]
+}
