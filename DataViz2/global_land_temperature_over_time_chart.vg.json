@@ -5,23 +5,23 @@
         "url": "data/GlobalTemperaturesYearly.csv"
     },
     "transform": [
-        { "calculate": "datum.LandAverageTemperature-datum.LandAverageTemperatureUncertainty", "as": "ci0" },
-        { "calculate": "datum.LandAverageTemperature+datum.LandAverageTemperatureUncertainty", "as": "ci1" }
+        { "calculate": "toNumber(datum.LandAverageTemperature) - toNumber(datum.LandAverageTemperatureUncertainty)", "as": "ci0" },
+        { "calculate": "toNumber(datum.LandAverageTemperature) + toNumber(datum.LandAverageTemperatureUncertainty)", "as": "ci1" }
     ],
     "layer": [
         {
             "mark": "errorband",
             "encoding": {
-                "x": { "field": "dt", "title": "Year", "type":"temporal", "timeUnit": "year" },
+                "x": { "field": "dt", "title": "Year", "type": "temporal"},
                 "y": { "field": "ci1", "type": "quantitative", "title":"Average land temperature (Celsius)" },
-                "y2": { "field": "ci0" }
+                "y2": { "field": "ci0", "type": "quantitative" }
             }
         },
         {
             "mark": "line",
             "encoding": {
-                "x": { "field": "dt", "title": "Year", "type":"temporal", "timeUnit": "year" },
-                "y": { "field": "LandAverageTemperature", "type": "quantitative", "title":"Average land temperature (Celsius)" }
+                "x": { "field": "dt", "title": "Year", "type": "temporal" },
+                "y": { "field": "LandAverageTemperature", "type": "quantitative", "title":"Average land temperature (Celsius)", "aggregate": "average" }
             }
         }
     ]
