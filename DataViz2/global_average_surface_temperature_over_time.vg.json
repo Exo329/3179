@@ -1,0 +1,52 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "data": {
+        "url": "data/GlobalTemperaturesYearly.csv"
+    },
+    "transform": [
+        { "calculate": "toNumber(datum.LandAndOceanAverageTemperature) - avg_temp", "as": "Difference from average (°C)" },
+        { "calculate": "toNumber(datum.LandAndOceanAverageTemperature) - toNumber(datum.LandAndOceanAverageTemperatureUncertainty) - avg_temp", "as": "min_ci" },
+        { "calculate": "toNumber(datum.LandAndOceanAverageTemperature) + toNumber(datum.LandAndOceanAverageTemperatureUncertainty) - avg_temp", "as": "max_ci" }
+    ],
+    "params": [
+        { "name": "avg_temp", "value": 15.22454421 }
+    ],
+    "config": {"view": {"stroke": null}},
+    "layer": [
+        {
+            "mark": "bar",
+            "encoding": {
+                "color": { "field": "Difference from average (°C)", "type": "quantitative", "scale": { "scheme": "redblue", "reverse": true, "domainMid":0 } },
+                "x": { "field": "Year", "title": "Year", "type": "temporal", "timeUnit": "year", "axis": {"domain": false, "grid": false, "ticks": false} },
+                "y": { "field": "Difference from average (°C)", "type": "quantitative", "axis": {"domain": false, "grid": false, "ticks": false} },
+                "tooltip": [
+                    { "field": "Year", "title": "Year","type": "temporal", "timeUnit": "year", "format": "%Y" },
+                    { "field": "Difference from average (°C)", "type": "quantitative", "format": "0.3f" },
+                    { "field": "min_ci", "title": "95% confidence interval lower bound", "type": "quantitative", "format": "0.3f" },
+                    { "field": "max_ci", "title": "95% confidence interval upper bound", "type": "quantitative", "format": "0.3f" }
+                ]
+            }
+        },
+        {
+            "mark": 
+            {
+                "type": "errorbar",
+                "color": "lightgray",
+                "ticks": { "size": 5 },
+                "clip": true
+            },
+            "encoding": {
+                "x": { "field": "Year", "title": "Year", "type": "temporal", "timeUnit": "year" },
+                "y": { "field": "max_ci", "type": "quantitative", "title": "Difference from average (°C)" },
+                "y2": { "field": "min_ci" },
+                "tooltip": [
+                    { "field": "Year", "title": "Year","type": "temporal", "timeUnit": "year", "format": "%Y" },
+                    { "field": "Difference from average (°C)", "type": "quantitative", "format": "0.3f" },
+                    { "field": "min_ci", "title": "95% confidence interval lower bound", "type": "quantitative", "format": "0.3f" },
+                    { "field": "max_ci", "title": "95% confidence interval upper bound", "type": "quantitative", "format": "0.3f" }
+                ]
+            }
+        }
+    ]
+}
