@@ -12,7 +12,7 @@
     "params": [
         { "name": "avg_temp", "value": 15.22454421 }
     ],
-    "config": {"view": {"stroke": null}},
+    "config": {"view": {"stroke": null}, "background": null },
     "layer": [
         {
             "mark": "bar",
