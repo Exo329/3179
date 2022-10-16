@@ -47,7 +47,7 @@
         },
         {
             "data": {
-                "url": "/data/GlobalCO2Emissions.csv"
+                "url": "data/GlobalCO2Emissions.csv"
             },
             "transform": [
                 {
