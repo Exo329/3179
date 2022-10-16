@@ -74,7 +74,7 @@
                     {
                         "field": "Difference from average",
                         "type": "quantitative",
-                        "format": "0.3f°C"
+                        "format": "0.3f"
                     },
                     {
                         "field": "min_ci",
