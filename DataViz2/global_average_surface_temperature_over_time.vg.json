@@ -2,7 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container",
     "data": {
-        "url": "data/GlobalTemperaturesYearly.csv"
+        "url": "https://media.githubusercontent.com/media/Exo329/3179/main/DataViz2/data/GlobalTemperaturesYearly.csv"
     },
     "transform": [
         {
