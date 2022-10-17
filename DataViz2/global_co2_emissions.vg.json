@@ -149,6 +149,7 @@
                     "scale": {
                         "scheme": "redblue",
                         "reverse": true,
+                        "domainMin": 0,
                         "domainMid": 0,
                         "nice": true
                     }
