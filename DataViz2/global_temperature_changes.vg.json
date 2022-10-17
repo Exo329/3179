@@ -34,7 +34,7 @@
         },
         {
             "data": {
-                "url": "https://raw.githubusercontent.com/Exo329/3179/main/DataViz2/data/GlobalLandTemperaturesByMajorCity1850average2013value.csv.csv",
+                "url": "https://raw.githubusercontent.com/Exo329/3179/main/DataViz2/data/GlobalLandTemperaturesByMajorCity1850average2013value.csv",
                 "format": {"type": "csv"}
             },
             "transform": [
