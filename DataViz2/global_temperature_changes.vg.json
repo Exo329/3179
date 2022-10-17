@@ -30,6 +30,7 @@
                   "calculate": "toNumber(datum.Temperature2013) - toNumber(datum.AverageTemperature)", "as": "Temperature change (average since 1850 compared to 2013)"
                 }
             ],
+            "mark": {"type": "circle", "tooltip": {"content": "data"}},
             "encoding": {
                 "longitude": {
                     "field": "Longitude",
