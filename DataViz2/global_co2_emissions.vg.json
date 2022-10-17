@@ -118,15 +118,15 @@
         },
         {
             "data": {
-                "url": "https://raw.githubusercontent.com/Exo329/3179/main/DataViz2/data/GlobalLandTemperaturesByMajorCity1850average2013value.csv",
+                "url": "https://raw.githubusercontent.com/Exo329/3179/main/DataViz2/data/GlobalLandTemperaturesByMajorCityAveragesPrePost1970.csv",
                 "format": {
                     "type": "csv"
                 }
             },
             "transform": [
                 {
-                    "calculate": "toNumber(datum.Temperature2013) - toNumber(datum.AverageTemperature)",
-                    "as": "Temperature change (average since 1850 compared to 2013)"
+                    "calculate": "toNumber(datum.AverageTemperaturePost1970) - toNumber(datum.AverageTemperaturePre1970)",
+                    "as": "Temperature change"
                 }
             ],
             "mark": {
@@ -145,7 +145,7 @@
                     "type": "quantitative"
                 },
                 "color": {
-                    "field": "Temperature change (average since 1850 compared to 2013)",
+                    "field": "Temperature change",
                     "type": "quantitative",
                     "scale": {
                         "scheme": "redblue",
@@ -164,7 +164,20 @@
                         "type": "nominal"
                     },
                     {
-                        "field": "Temperature change (average since 1850 compared to 2013)",
+                        "field": "AverageTemperaturePre1970",
+                        "title": "Average Temperature pre 1970 (exc)",
+                        "type": "quantitative",
+                        "format": ".2f"
+                    },
+                    {
+                        "field": "AverageTemperaturePost1970",
+                        "title": "Average Temperature post 1970 (inc)",
+                        "type": "quantitative",
+                        "format": ".2f"
+                    },
+                    {
+                        "field": "Temperature change",
+                        "title": "Temperature change (between averages pre and post 1970)",
                         "type": "quantitative",
                         "format": ".2f"
                     }
