@@ -40,10 +40,6 @@
                     "field": "Latitude",
                     "type": "quantitative"
                 },
-                "size": {
-                    "field": "Temperature change (average since 1850 compared to 2013)",
-                    "type": "quantitative"
-                },
                 "color": {
                     "field": "Temperature change (average since 1850 compared to 2013)",
                     "type": "quantitative",
