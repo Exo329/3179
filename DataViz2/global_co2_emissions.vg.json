@@ -35,8 +35,8 @@
             ],
             "mark": {
                 "type": "geoshape",
-                "fill": "#ddd",
-                "stroke": "white",
+                "fill": "white",
+                "stroke": "black",
                 "strokeWidth": 1
             },
             "encoding": {
@@ -48,7 +48,9 @@
         {
             "data": {
                 "url": "https://raw.githubusercontent.com/Exo329/3179/main/DataViz2/data/GlobalCO2Emissions.csv",
-                "format": {"type": "csv"}
+                "format": {
+                    "type": "csv"
+                }
             },
             "transform": [
                 {
@@ -69,7 +71,7 @@
                     "filter": "datum.year == Year_selection"
                 },
                 {
-                  "filter": "datum.ISO != ''"
+                    "filter": "datum.ISO != ''"
                 }
             ],
             "mark": {
@@ -89,7 +91,10 @@
                     "legend": {
                         "format": ".2f"
                     },
-                    "scale": {"scheme": "greys", "reverse":true}
+                    "scale": {
+                        "scheme": "greys",
+                        "nice": true
+                    }
                 },
                 "tooltip": [
                     {
@@ -114,14 +119,22 @@
         {
             "data": {
                 "url": "https://raw.githubusercontent.com/Exo329/3179/main/DataViz2/data/GlobalLandTemperaturesByMajorCity1850average2013value.csv",
-                "format": {"type": "csv"}
+                "format": {
+                    "type": "csv"
+                }
             },
             "transform": [
                 {
-                "calculate": "toNumber(datum.Temperature2013) - toNumber(datum.AverageTemperature)", "as": "Temperature change (average since 1850 compared to 2013)"
+                    "calculate": "toNumber(datum.Temperature2013) - toNumber(datum.AverageTemperature)",
+                    "as": "Temperature change (average since 1850 compared to 2013)"
                 }
             ],
-            "mark": {"type": "circle", "tooltip": {"content": "data"}},
+            "mark": {
+                "type": "circle",
+                "tooltip": {
+                    "content": "data"
+                }
+            },
             "encoding": {
                 "longitude": {
                     "field": "Longitude",
@@ -137,7 +150,8 @@
                     "scale": {
                         "scheme": "redblue",
                         "reverse": true,
-                        "domainMid": 0
+                        "domainMid": 0,
+                        "nice": true
                     }
                 },
                 "tooltip": [
@@ -157,5 +171,10 @@
                 ]
             }
         }
-    ]
+    ],
+    "resolve": {
+        "scale": {
+            "color": "independent"
+        }
+    }
 }
