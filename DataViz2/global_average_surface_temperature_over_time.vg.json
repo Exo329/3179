@@ -40,7 +40,8 @@
                     "scale": {
                         "scheme": "redblue",
                         "reverse": true,
-                        "domainMid": 0
+                        "domainMid": 0,
+                        "nice": true
                     }
                 },
                 "x": {
