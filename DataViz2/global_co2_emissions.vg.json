@@ -88,7 +88,8 @@
                     "title": "CO2 emissions per capita (tonnes)",
                     "legend": {
                         "format": ".2f"
-                    }
+                    },
+                    "scale": {"scheme": "greys", "reverse":true}
                 },
                 "tooltip": [
                     {
@@ -106,6 +107,52 @@
                         "field": "year",
                         "type": "quantitative",
                         "title": "Year"
+                    }
+                ]
+            }
+        },
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/Exo329/3179/main/DataViz2/data/GlobalLandTemperaturesByMajorCity1850average2013value.csv",
+                "format": {"type": "csv"}
+            },
+            "transform": [
+                {
+                "calculate": "toNumber(datum.Temperature2013) - toNumber(datum.AverageTemperature)", "as": "Temperature change (average since 1850 compared to 2013)"
+                }
+            ],
+            "mark": {"type": "circle", "tooltip": {"content": "data"}},
+            "encoding": {
+                "longitude": {
+                    "field": "Longitude",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "Latitude",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "field": "Temperature change (average since 1850 compared to 2013)",
+                    "type": "quantitative",
+                    "scale": {
+                        "scheme": "redblue",
+                        "reverse": true,
+                        "domainMid": 0
+                    }
+                },
+                "tooltip": [
+                    {
+                        "field": "Country",
+                        "type": "nominal"
+                    },
+                    {
+                        "field": "City",
+                        "type": "nominal"
+                    },
+                    {
+                        "field": "Temperature change (average since 1850 compared to 2013)",
+                        "type": "quantitative",
+                        "format": ".2f"
                     }
                 ]
             }
